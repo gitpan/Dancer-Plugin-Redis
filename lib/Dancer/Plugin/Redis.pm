@@ -10,7 +10,7 @@ Dancer::Plugin::Redis - easy database connections for Dancer applications
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 my $settings = plugin_setting;
 my %handles;
@@ -188,7 +188,7 @@ connected with those details.
 
 =head1 AUTHOR
 
-David Precious, C<< <davidp@preshweb.co.uk> >>
+Christophe Nowicki, C<< <cscm@csquad.org> >>
 
 
 
@@ -196,14 +196,14 @@ David Precious, C<< <davidp@preshweb.co.uk> >>
 
 This module is developed on Github at:
 
-L<http://github.com/bigpresh/Dancer-Plugin-Redis>
+L<https://github.com/cscm/Dancer-Plugin-Redis>
 
 Feel free to fork the repo and submit pull requests!
 
 
 =head1 ACKNOWLEDGEMENTS
 
-Igor Bujna
+Igor Bujna, David Precious
 
 
 =head1 BUGS
@@ -249,7 +249,7 @@ You can find the author on IRC in the channel C<#dancer> on <irc.perl.org>.
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2010 David Precious.
+Copyright 2010 Christophe Nowicki.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published

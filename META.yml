@@ -1,0 +1,16 @@
+--- #YAML:1.0
+name:                Dancer-Plugin-Redis
+version:             0.01
+abstract:            easy database connections for Dancer applications
+license:             perl
+author:              
+    - Christophe Nowicki <cscm@csquad.org>
+generated_by:        ExtUtils::MakeMaker version 6.42
+distribution_type:   module
+requires:     
+    Dancer:                        1.175
+    Redis:                         0
+    Test::More:                    0
+meta-spec:
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3

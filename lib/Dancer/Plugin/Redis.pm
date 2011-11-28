@@ -1,130 +1,91 @@
+#
+# This file is part of Dancer-Plugin-Redis
+#
+# This software is copyright (c) 2011 by Christophe Nowicki <cscm@csquad.org>.
+#
+# This is free software; you can redistribute it and/or modify it under
+# the same terms as the Perl 5 programming language system itself.
+#
 package Dancer::Plugin::Redis;
 
+# ABSTRACT: easy database connections for Dancer applications
+
 use strict;
+use warnings;
+use Carp;
+use Data::Dumper;
 use Dancer::Plugin;
 use Redis;
+use Try::Tiny;
+
+our $VERSION = '0.03';    # VERSION
+
+my $_settings;
+my $_handles_conf;
+
+sub _handle {
+    my ($name) = @_;
+    $name = "_default" if not defined $name;
+
+    my $h = $_handles_conf->{$name};
+    if ( defined $h && $h->ping eq 'PONG' ) {
+        return $h;
+    }
+
+    my @conf;
+    if ( $name eq '_default' ) {
+        @conf = (
+            server   => $_settings->{server},
+            debug    => $_settings->{debug},
+            encoding => $_settings->{encoding},
+        );
+    }
+    else {
+        @conf = (
+            server   => $_settings->{connections}->{$name}->{server},
+            debug    => $_settings->{connections}->{$name}->{debug},
+            encoding => $_settings->{connections}->{$name}->{encoding},
+        );
+    }
+
+    if (@conf) {
+        try {
+            $h = $_handles_conf->{$name} = Redis->new( @conf );
+        };
+        if ( defined $h && $h->ping eq 'PONG' ) {
+            return $h;
+        }
+        else {
+            croak "Can't connect to $name redis connection ...";
+        }
+
+    }
+    else {
+        croak "The redis connection conf $name doesn't exists !";
+    }
+}
+
+register redis => sub {
+    my ($name) = @_;
+    $_settings ||= plugin_setting;
+    return _handle($name);
+};
+
+register_plugin;
+
+1;    # End of Dancer::Plugin::Redis
+
+__END__
+
+=pod
 
 =head1 NAME
 
 Dancer::Plugin::Redis - easy database connections for Dancer applications
 
-=cut
+=head1 VERSION
 
-our $VERSION = '0.02';
-
-my $settings = plugin_setting;
-my %handles;
-# Hashref used as key for default handle, so we don't have a magic value that
-# the user could use for one of their connection names and cause problems
-# (Kudos to Igor Bujna for the idea)
-my $def_handle = {};
-
-register redis => sub {
-    my $name = shift;
-    my $handle = defined($name) ? $handles{$name} : $def_handle;
-    my $settings = _get_settings($name);
-
-    if ($handle->{dbh}) {
-        if (time - $handle->{last_connection_check}
-            < $settings->{connection_check_threshold}) {
-            return $handle->{dbh};
-        } else {
-            if (_check_connection($handle->{dbh})) {
-                $handle->{last_connection_check} = time;
-                return $handle->{dbh};
-            } else {
-                Dancer::Logger::debug(
-                    "Redis connection went away, reconnecting"
-                );
-                return $handle->{dbh}= _get_connection($settings);
-            }
-        }
-    } else {
-        # Get a new connection
-        if (!$settings) {
-            Dancer::Logger::error(
-                "No DB settings named $name, so cannot connect"
-            );
-            return;
-        }
-        if ($handle->{dbh} = _get_connection($settings)) {
-            $handle->{last_connection_check} = time;
-            return $handle->{dbh};
-        } else {
-            return;
-        }
-    }
-};
-
-register_plugin;
-
-# Given the settings to use, try to get a database connection
-sub _get_connection {
-    my $settings = shift;
-
-    my $r = Redis->new(
-	server =>  $settings->{server}, debug =>  $settings->{debug} 
-    );
-
-    if (!$r) {
-        Dancer::Logger::error(
-            "Redis connection failed - " 
-        );
-    }
-
-    return $r;
-}
-
-
-
-# Check the connection is alive
-sub _check_connection {
-    my $dbh = shift;
-    return unless $dbh;
-    my $result;
-    # Redis.pm die when the connection is closed
-    eval { $result = $dbh->ping; }; return 0 if $@;
-    if ($result eq "PONG") {
-            return 1;
-    };
-    return 0;
-}
-
-sub _get_settings {
-    my $name = shift;
-    my $return_settings;
-
-    # If no name given, just return the default settings
-    # (Take a copy and remove the connections key, so we have only the main
-    # connection details)
-    if (!defined $name) {
-        $return_settings = { %$settings };
-    } else {
-        # If there are no named connections in the config, bail now:
-        return unless exists $settings->{connections};
-
-
-        # OK, find a matching config for this name:
-        if (my $settings = $settings->{connections}{$name}) {
-            $return_settings = { %$settings };
-        } else {
-            # OK, didn't match anything
-            Dancer::Logger::error(
-                "Asked for a database handle named '$name' but no matching  "
-               ."connection details found in config"
-            );
-        }
-    }
-    
-    # We should have soemthing to return now; remove any unrelated connections
-    # (only needed if this is the default connection), and make sure we have a
-    # connection_check_threshold, then return what we found
-    delete $return_settings->{connections};
-    $return_settings->{connection_check_threshold} ||= 5;
-    return $return_settings;
-
-}
-
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -140,7 +101,6 @@ sub _get_settings {
 
 Redis connection details are read from your Dancer application config - see
 below.
-
 
 =head1 DESCRIPTION
 
@@ -164,6 +124,12 @@ should be specified as, for example:
         Redis:
             server: '127.0.0.1:6379'
             debug: 0
+            encoding: utf8
+            connections:
+                test:
+                    server: '127.0.0.1:6380'
+                    debug: 1
+                    encoding: utf8
 
 The C<connectivity-check-threshold> setting is optional, if not provided, it
 will default to 30 seconds.  If the database keyword was last called more than
@@ -171,7 +137,6 @@ this number of seconds ago, a quick check will be performed to ensure that we
 still have a connection to the database, and will reconnect if not.  This
 handles cases where the database handle hasn't been used for a while and the
 underlying connection has gone away.
-
 
 =head1 GETTING A DATABASE HANDLE
 
@@ -190,8 +155,6 @@ connected with those details.
 
 Christophe Nowicki, C<< <cscm@csquad.org> >>
 
-
-
 =head1 CONTRIBUTING
 
 This module is developed on Github at:
@@ -200,11 +163,9 @@ L<https://github.com/cscm/Dancer-Plugin-Redis>
 
 Feel free to fork the repo and submit pull requests!
 
-
 =head1 ACKNOWLEDGEMENTS
 
 Igor Bujna, David Precious
-
 
 =head1 BUGS
 
@@ -212,15 +173,11 @@ Please report any bugs or feature requests to C<bug-dancer-plugin-database at rt
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Dancer-Plugin-Redis>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
-
-
-
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
     perldoc Dancer::Plugin::Redis
-
 
 You can also look for information at:
 
@@ -246,7 +203,6 @@ L<http://search.cpan.org/dist/Dancer-Plugin-Redis/>
 
 You can find the author on IRC in the channel C<#dancer> on <irc.perl.org>.
 
-
 =head1 LICENSE AND COPYRIGHT
 
 Copyright 2010 Christophe Nowicki.
@@ -257,15 +213,21 @@ by the Free Software Foundation; or the Artistic License.
 
 See http://dev.perl.org/licenses/ for more information.
 
-
 =head1 SEE ALSO
 
 L<Dancer>
 
 L<DBI>
 
+=head1 AUTHOR
 
+Celogeek <geistteufel@yahoo.fr>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Christophe Nowicki <cscm@csquad.org>.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-1; # End of Dancer::Plugin::Redis

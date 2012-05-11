@@ -7,7 +7,6 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   "build_requires" => {
-    "English" => 0,
     "File::Find" => 0,
     "File::Temp" => 0,
     "Module::Build" => "0.3601",
@@ -20,10 +19,10 @@ my %module_build_args = (
   },
   "dist_abstract" => "easy database connections for Dancer applications",
   "dist_author" => [
-    "Celogeek <geistteufel\@yahoo.fr>"
+    "Geistteufel <geistteufel\@celogeek.fr>"
   ],
   "dist_name" => "Dancer-Plugin-Redis",
-  "dist_version" => "0.03",
+  "dist_version" => "0.05",
   "license" => "perl",
   "module_name" => "Dancer::Plugin::Redis",
   "recommends" => {},

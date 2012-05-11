@@ -2,7 +2,7 @@
 #
 # This file is part of Dancer-Plugin-Redis
 #
-# This software is copyright (c) 2011 by Christophe Nowicki <cscm@csquad.org>.
+# This software is copyright (c) 2011 by Geistteufel <geistteufel@celogeek.fr>.
 #
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.

@@ -1,11 +1,11 @@
 
 
 This archive contains the distribution Dancer-Plugin-Redis,
-version 0.03:
+version 0.05:
 
   easy database connections for Dancer applications
 
-This software is copyright (c) 2011 by Christophe Nowicki <cscm@csquad.org>.
+This software is copyright (c) 2011 by Geistteufel <geistteufel@celogeek.fr>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

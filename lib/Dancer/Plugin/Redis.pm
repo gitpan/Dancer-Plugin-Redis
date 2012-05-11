@@ -1,7 +1,7 @@
 #
 # This file is part of Dancer-Plugin-Redis
 #
-# This software is copyright (c) 2011 by Christophe Nowicki <cscm@csquad.org>.
+# This software is copyright (c) 2011 by Geistteufel <geistteufel@celogeek.fr>.
 #
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
@@ -18,7 +18,7 @@ use Dancer::Plugin;
 use Redis;
 use Try::Tiny;
 
-our $VERSION = '0.03';    # VERSION
+our $VERSION = '0.05';    # VERSION
 
 my $_settings;
 my $_handles_conf;
@@ -28,7 +28,7 @@ sub _handle {
     $name = "_default" if not defined $name;
 
     my $h = $_handles_conf->{$name};
-    if ( defined $h && $h->ping eq 'PONG' ) {
+    if ( defined $h && ( $h->ping || '' ) eq 'PONG' ) {
         return $h;
     }
 
@@ -85,7 +85,7 @@ Dancer::Plugin::Redis - easy database connections for Dancer applications
 
 =head1 VERSION
 
-version 0.03
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -221,11 +221,11 @@ L<DBI>
 
 =head1 AUTHOR
 
-Celogeek <geistteufel@yahoo.fr>
+Geistteufel <geistteufel@celogeek.fr>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Christophe Nowicki <cscm@csquad.org>.
+This software is copyright (c) 2011 by Geistteufel <geistteufel@celogeek.fr>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

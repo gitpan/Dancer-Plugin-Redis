@@ -23,10 +23,10 @@ requires:
   Dancer::Plugin: 0
   Data::Dumper: 0
   LWP::Protocol::https: 0
-  Redis: 0
+  Redis: 1.951
   Template: 0
   Try::Tiny: 0
-  perl: 5.006
+  perl: 5.010
   strict: 0
   warnings: 0
-version: 0.05
+version: 0.06

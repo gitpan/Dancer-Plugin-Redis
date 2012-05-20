@@ -22,7 +22,7 @@ my %module_build_args = (
     "Geistteufel <geistteufel\@celogeek.fr>"
   ],
   "dist_name" => "Dancer-Plugin-Redis",
-  "dist_version" => "0.06",
+  "dist_version" => "0.07",
   "license" => "perl",
   "module_name" => "Dancer::Plugin::Redis",
   "recommends" => {},
@@ -31,9 +31,7 @@ my %module_build_args = (
     "Carp" => 0,
     "Dancer::Plugin" => 0,
     "Data::Dumper" => 0,
-    "LWP::Protocol::https" => 0,
     "Redis" => "1.951",
-    "Template" => 0,
     "Try::Tiny" => 0,
     "perl" => "5.010",
     "strict" => 0,

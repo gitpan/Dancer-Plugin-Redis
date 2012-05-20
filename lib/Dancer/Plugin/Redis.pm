@@ -18,7 +18,7 @@ use Dancer::Plugin;
 use Redis 1.951;
 use Try::Tiny;
 
-our $VERSION = '0.06';    # VERSION
+our $VERSION = '0.07';    # VERSION
 
 my $_settings;
 my $_handles;
@@ -58,7 +58,7 @@ Dancer::Plugin::Redis - easy database connections for Dancer applications
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 

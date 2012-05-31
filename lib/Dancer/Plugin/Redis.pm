@@ -18,7 +18,7 @@ use Dancer::Plugin;
 use Redis 1.951;
 use Try::Tiny;
 
-our $VERSION = '0.08';    # VERSION
+our $VERSION = '0.09';    # VERSION
 
 my $_settings;
 my $_handles;
@@ -58,7 +58,7 @@ Dancer::Plugin::Redis - easy database connections for Dancer applications
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 
@@ -157,12 +157,9 @@ L<http://cpanratings.perl.org/d/Dancer-Plugin-Redis>
 
 L<http://search.cpan.org/dist/Dancer-Plugin-Redis/>
 
-=item * Github project
-L<https://github.com/geistteufel/Dancer-Plugin-Redis>
-
 =back
 
-You can find the author on IRC in the channel C<#dancer> on <irc.perl.org>.
+You can find the author on IRC in the channel C<#dancer> on irc.perl.org.
 
 =head1 SEE ALSO
 

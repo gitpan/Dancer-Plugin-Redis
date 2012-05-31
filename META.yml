@@ -32,4 +32,4 @@ requires:
   warnings: 0
 resources:
   repository: https://github.com/geistteufel/Dancer-Plugin-Redis.git
-version: 0.08
+version: 0.09

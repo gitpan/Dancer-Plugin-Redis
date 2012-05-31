@@ -4,6 +4,7 @@ LICENSE
 MANIFEST
 META.yml
 README
+README.mkdn
 dist.ini
 lib/Dancer/Plugin/Redis.pm
 perlcriticrc
@@ -11,6 +12,9 @@ perltidyrc
 t/00-compile.t
 t/000-report-versions.t
 t/author-critic.t
+t/lib/FakeRedis.pm
+t/lib/TestApp.pm
+t/redis.t
 t/release-consistent-version.t
 t/release-minimum-version.t
 t/release-pod-coverage.t

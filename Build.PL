@@ -7,7 +7,10 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   "build_requires" => {
+    "Dancer" => 0,
+    "Dancer::Test" => 0,
     "File::Find" => 0,
+    "File::Spec" => 0,
     "File::Temp" => 0,
     "Module::Build" => "0.3601",
     "Scalar::Util" => 0,
@@ -22,7 +25,7 @@ my %module_build_args = (
     "Geistteufel <geistteufel\@celogeek.fr>"
   ],
   "dist_name" => "Dancer-Plugin-Redis",
-  "dist_version" => "0.07",
+  "dist_version" => "0.08",
   "license" => "perl",
   "module_name" => "Dancer::Plugin::Redis",
   "recommends" => {},

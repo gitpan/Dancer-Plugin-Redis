@@ -12,7 +12,7 @@ package Dancer::Plugin::Redis;
 
 use strict;
 use warnings;
-our $VERSION = '0.10';    # VERSION
+our $VERSION = '0.11';    # VERSION
 use Carp;
 use Data::Dumper;
 use Dancer::Plugin;
@@ -25,21 +25,29 @@ use Try::Tiny;
     use warnings;
     use parent 'Redis';
 
-    my $PASSWORD;
-
     sub new {
         my ( $class, %param ) = @_;
 
-        $PASSWORD = delete $param{password};
+        my $self = $class->SUPER::new(%param);
+        $self->{password} = delete $param{password};
+        $self->__auth;
 
-        return $class->SUPER::new(%param);
+        return $self;
     }
 
     sub __connect {
         my $self = shift;
 
-        $self->SUPER::__connect(@_);
-        $self->auth($PASSWORD) if defined $PASSWORD;
+        $self->SUPER::__connect;
+        $self->__auth;
+
+        return;
+    }
+
+    sub __auth {
+        my $self = shift;
+
+        $self->auth( $self->{password} ) if defined $self->{password};
 
         return;
     }
@@ -84,7 +92,7 @@ Dancer::Plugin::Redis - easy database connections for Dancer applications
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

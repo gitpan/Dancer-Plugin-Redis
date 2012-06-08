@@ -1,7 +1,7 @@
 #
 # This file is part of Dancer-Plugin-Redis
 #
-# This software is copyright (c) 2011 by Geistteufel <geistteufel@celogeek.fr>.
+# This software is copyright (c) 2011 by celogeek <me@celogeek.com>.
 #
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
@@ -12,7 +12,7 @@ package Dancer::Plugin::Redis;
 
 use strict;
 use warnings;
-our $VERSION = '0.11';    # VERSION
+our $VERSION = '0.12';    # VERSION
 use Carp;
 use Data::Dumper;
 use Dancer::Plugin;
@@ -92,7 +92,7 @@ Dancer::Plugin::Redis - easy database connections for Dancer applications
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 
@@ -159,7 +159,7 @@ connected with those details.
 
 This module is developed on Github at:
 
-L<https://github.com/geistteufel/Dancer-Plugin-Redis>
+L<https://github.com/celogeek/Dancer-Plugin-Redis>
 
 Feel free to fork the repo and submit pull requests!
 
@@ -209,11 +209,11 @@ L<Redis>
 
 =head1 AUTHOR
 
-Geistteufel <geistteufel@celogeek.fr>
+celogeek <me@celogeek.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Geistteufel <geistteufel@celogeek.fr>.
+This software is copyright (c) 2011 by celogeek <me@celogeek.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -22,10 +22,10 @@ my %module_build_args = (
   },
   "dist_abstract" => "easy database connections for Dancer applications",
   "dist_author" => [
-    "Geistteufel <geistteufel\@celogeek.fr>"
+    "celogeek <me\@celogeek.com>"
   ],
   "dist_name" => "Dancer-Plugin-Redis",
-  "dist_version" => "0.11",
+  "dist_version" => "0.12",
   "license" => "perl",
   "module_name" => "Dancer::Plugin::Redis",
   "recommends" => {},

@@ -1,4 +1,6 @@
-Revision history for Dancer-Plugin-Redis
+0.13      2012-07-08 18:52:22 Europe/Paris
+
+        Use Dist::Zilla Bundle Celogeek
 
 [celogeek]
 

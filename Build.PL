@@ -25,7 +25,7 @@ my %module_build_args = (
     "celogeek <me\@celogeek.com>"
   ],
   "dist_name" => "Dancer-Plugin-Redis",
-  "dist_version" => "0.12",
+  "dist_version" => "0.13",
   "license" => "perl",
   "module_name" => "Dancer::Plugin::Redis",
   "recommends" => {},

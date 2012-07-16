@@ -35,7 +35,7 @@ resources:
   bugtracker: https://github.com/celogeek/Dancer-Plugin-Redis/issues
   homepage: https://github.com/celogeek/Dancer-Plugin-Redis/wiki
   repository: git://github.com/celogeek/Dancer-Plugin-Redis.git
-version: 0.13
+version: 0.14
 x_Dist_Zilla:
   plugins:
     -
@@ -159,6 +159,10 @@ x_Dist_Zilla:
       name: '@Author::Celogeek/Test::UnusedVars'
       version: 2.000003
     -
+      class: Dist::Zilla::Plugin::PodCoverageTests
+      name: '@Author::Celogeek/PodCoverageTests'
+      version: 4.300020
+    -
       class: Dist::Zilla::Plugin::PruneFiles
       name: '@Author::Celogeek/PruneFiles'
       version: 4.300020
@@ -182,6 +186,14 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::Run::BeforeRelease
       name: '@Author::Celogeek/Run::BeforeRelease'
       version: 0.013
+    -
+      class: Dist::Zilla::Plugin::PerlTidy
+      name: '@Author::Celogeek/PerlTidy'
+      version: 0.12
+    -
+      class: Dist::Zilla::Plugin::Test::Perl::Critic
+      name: '@Author::Celogeek/Test::Perl::Critic'
+      version: 2.112410
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:

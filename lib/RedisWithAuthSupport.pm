@@ -12,7 +12,7 @@ package RedisWithAuthSupport;
 
 use strict;
 use warnings;
-our $VERSION = '0.14';    # VERSION
+our $VERSION = '0.2';    # VERSION
 use parent 'Redis';
 
 ## no critic qw(Subroutines::ProhibitUnusedPrivateSubroutines)
@@ -55,7 +55,7 @@ RedisWithAuthSupport - add support to Redis
 
 =head1 VERSION
 
-version 0.14
+version 0.2
 
 =head1 METHODS
 

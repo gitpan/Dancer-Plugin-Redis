@@ -12,7 +12,7 @@ package Dancer::Plugin::Redis;
 
 use strict;
 use warnings;
-our $VERSION = '0.14';    # VERSION
+our $VERSION = '0.2';    # VERSION
 use Carp;
 use Data::Dumper;
 use Dancer::Plugin;
@@ -58,7 +58,7 @@ Dancer::Plugin::Redis - easy database connections for Dancer applications
 
 =head1 VERSION
 
-version 0.14
+version 0.2
 
 =head1 SYNOPSIS
 

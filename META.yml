@@ -35,7 +35,7 @@ resources:
   bugtracker: https://github.com/celogeek/Dancer-Plugin-Redis/issues
   homepage: https://github.com/celogeek/Dancer-Plugin-Redis/wiki
   repository: git://github.com/celogeek/Dancer-Plugin-Redis.git
-version: 0.14
+version: 0.2
 x_Dist_Zilla:
   plugins:
     -

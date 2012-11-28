@@ -1,3 +1,8 @@
+0.3       2012-11-28 19:11:49 Europe/Paris
+
+    * update meta
+    * update redis deps : use password generator from it
+
 0.2       2012-07-17 15:28:31 Europe/Paris
 
     Move to bundle plugin version number

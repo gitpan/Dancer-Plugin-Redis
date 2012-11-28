@@ -12,12 +12,12 @@ package Dancer::Plugin::Redis;
 
 use strict;
 use warnings;
-our $VERSION = '0.2';    # VERSION
+our $VERSION = '0.3';    # VERSION
 use Carp;
 use Data::Dumper;
 use Dancer::Plugin;
 use Try::Tiny;
-use RedisWithAuthSupport;
+use Redis 1.955;
 
 my $_settings;
 my $_handles;
@@ -36,7 +36,7 @@ register redis => sub {
     croak "$name is not defined in your redis conf, please check the doc"
         unless defined $conf;
 
-    return $_handles->{$name} = RedisWithAuthSupport->new(
+    return $_handles->{$name} = Redis->new(
         server    => $conf->{server},
         debug     => $conf->{debug},
         encoding  => $conf->{encoding},
@@ -50,6 +50,8 @@ register_plugin;
 
 1;
 
+__END__
+
 =pod
 
 =head1 NAME
@@ -58,7 +60,7 @@ Dancer::Plugin::Redis - easy database connections for Dancer applications
 
 =head1 VERSION
 
-version 0.2
+version 0.3
 
 =head1 SYNOPSIS
 
@@ -132,7 +134,7 @@ L<Redis>
 =head1 BUGS
 
 Please report any bugs or feature requests on the bugtracker website
-https://github.com/celogeek/Dancer-Plugin-Redis/issues
+http://tasks.celogeek.com/projects/perl-modules-dancer-plugin-redis
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
@@ -150,5 +152,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-__END__

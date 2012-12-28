@@ -12,9 +12,9 @@ package Dancer::Plugin::Redis;
 
 use strict;
 use warnings;
-our $VERSION = '0.3';    # VERSION
+our $VERSION = '0.4';    # VERSION
 use Carp;
-use Data::Dumper;
+use Dancer qw/:syntax/;
 use Dancer::Plugin;
 use Try::Tiny;
 use Redis 1.955;
@@ -22,8 +22,9 @@ use Redis 1.955;
 my $_settings;
 my $_handles;
 
-register redis => sub {
-    my ($name) = @_;
+sub redis {
+    my ( $dsl, $name ) = @_;
+    $name = $dsl       if dancer_version lt '1.99';
     $name = "_default" if not defined $name;
     return $_handles->{$name} if exists $_handles->{$name};
 
@@ -44,9 +45,10 @@ register redis => sub {
         password  => $conf->{password},
     );
 
-};
+}
 
-register_plugin;
+register redis => \&redis;
+register_plugin for_versions => [ 1, 2 ];
 
 1;
 
@@ -60,7 +62,7 @@ Dancer::Plugin::Redis - easy database connections for Dancer applications
 
 =head1 VERSION
 
-version 0.3
+version 0.4
 
 =head1 SYNOPSIS
 
@@ -81,6 +83,12 @@ below.
 
 Provides an easy way to obtain a connected Redis database handle by simply calling
 the redis keyword within your L<Dancer> application.
+
+=head1 METHODS
+
+=head2 redis
+
+Keywords redis, that use your config to connect to redis
 
 =head1 CONFIGURATION
 

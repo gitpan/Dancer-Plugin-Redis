@@ -3,11 +3,11 @@ abstract: 'easy database connections for Dancer applications'
 author:
   - 'celogeek <me@celogeek.com>'
 build_requires:
-  Dancer: 0
   Dancer::Test: 0
   File::Find: 0
   File::Spec: 0
   File::Temp: 0
+  JSON: 0
   Module::Build: 0.3601
   Scalar::Util: 0
   Test::More: 0.94
@@ -23,8 +23,8 @@ meta-spec:
 name: Dancer-Plugin-Redis
 requires:
   Carp: 0
+  Dancer: 0
   Dancer::Plugin: 0
-  Data::Dumper: 0
   Redis: 1.955
   Try::Tiny: 0
   perl: 5.010
@@ -34,7 +34,7 @@ resources:
   bugtracker: http://tasks.celogeek.com/projects/perl-modules-dancer-plugin-redis
   homepage: https://gitorious.celogeek.com/perl-modules/dancer-plugin-redis
   repository: git://gitorious.celogeek.com/perl-modules/dancer-plugin-redis.git
-version: 0.3
+version: 0.4
 x_Dist_Zilla:
   perl:
     version: 5.016002
@@ -42,7 +42,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
       name: '@Author::Celogeek/Git::NextVersion'
-      version: 2.003
+      version: 2.005
     -
       class: Dist::Zilla::Plugin::NextRelease
       name: '@Author::Celogeek/NextRelease'
@@ -50,19 +50,19 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::Check
       name: '@Author::Celogeek/@Git/Check'
-      version: 2.003
+      version: 2.005
     -
       class: Dist::Zilla::Plugin::Git::Commit
       name: '@Author::Celogeek/@Git/Commit'
-      version: 2.003
+      version: 2.005
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: '@Author::Celogeek/@Git/Tag'
-      version: 2.003
+      version: 2.005
     -
       class: Dist::Zilla::Plugin::Git::Push
       name: '@Author::Celogeek/@Git/Push'
-      version: 2.003
+      version: 2.005
     -
       class: Dist::Zilla::Plugin::GatherDir
       name: '@Author::Celogeek/@Filter/GatherDir'
@@ -171,6 +171,10 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::ReadmeMarkdownFromPod
       name: '@Author::Celogeek/ReadmeMarkdownFromPod'
       version: 0.120120
+    -
+      class: Dist::Zilla::Plugin::MetaJSON
+      name: '@Author::Celogeek/MetaJSON'
+      version: 4.300028
     -
       class: Dist::Zilla::Plugin::MetaResourcesFromGit
       name: '@Author::Celogeek/MetaResourcesFromGit'

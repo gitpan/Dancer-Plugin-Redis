@@ -12,9 +12,8 @@ package Dancer::Plugin::Redis;
 
 use strict;
 use warnings;
-our $VERSION = '0.4';    # VERSION
+our $VERSION = '0.5';    # VERSION
 use Carp;
-use Dancer qw/:syntax/;
 use Dancer::Plugin;
 use Try::Tiny;
 use Redis 1.955;
@@ -23,8 +22,8 @@ my $_settings;
 my $_handles;
 
 sub redis {
-    my ( $dsl, $name ) = @_;
-    $name = $dsl       if dancer_version lt '1.99';
+    my @args = @_;
+    my ( undef, $name ) = plugin_args(@args);
     $name = "_default" if not defined $name;
     return $_handles->{$name} if exists $_handles->{$name};
 
@@ -62,7 +61,7 @@ Dancer::Plugin::Redis - easy database connections for Dancer applications
 
 =head1 VERSION
 
-version 0.4
+version 0.5
 
 =head1 SYNOPSIS
 

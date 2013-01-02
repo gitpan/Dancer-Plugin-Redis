@@ -33,7 +33,6 @@
       "runtime" : {
          "requires" : {
             "Carp" : "0",
-            "Dancer" : "0",
             "Dancer::Plugin" : "0",
             "Redis" : "1.955",
             "Try::Tiny" : "0",
@@ -44,6 +43,7 @@
       },
       "test" : {
          "requires" : {
+            "Dancer" : "0",
             "Dancer::Test" : "0",
             "File::Find" : "0",
             "File::Spec" : "0",
@@ -67,7 +67,7 @@
          "web" : "https://gitorious.celogeek.com/perl-modules/dancer-plugin-redis"
       }
    },
-   "version" : "0.4",
+   "version" : "0.5",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.016002"

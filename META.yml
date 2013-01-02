@@ -3,6 +3,7 @@ abstract: 'easy database connections for Dancer applications'
 author:
   - 'celogeek <me@celogeek.com>'
 build_requires:
+  Dancer: 0
   Dancer::Test: 0
   File::Find: 0
   File::Spec: 0
@@ -23,7 +24,6 @@ meta-spec:
 name: Dancer-Plugin-Redis
 requires:
   Carp: 0
-  Dancer: 0
   Dancer::Plugin: 0
   Redis: 1.955
   Try::Tiny: 0
@@ -34,7 +34,7 @@ resources:
   bugtracker: http://tasks.celogeek.com/projects/perl-modules-dancer-plugin-redis
   homepage: https://gitorious.celogeek.com/perl-modules/dancer-plugin-redis
   repository: git://gitorious.celogeek.com/perl-modules/dancer-plugin-redis.git
-version: 0.4
+version: 0.5
 x_Dist_Zilla:
   perl:
     version: 5.016002

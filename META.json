@@ -67,7 +67,7 @@
          "web" : "https://gitorious.celogeek.com/perl-modules/dancer-plugin-redis"
       }
    },
-   "version" : "0.5",
+   "version" : "0.6",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.016002"

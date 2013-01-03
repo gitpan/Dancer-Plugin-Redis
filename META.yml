@@ -34,7 +34,7 @@ resources:
   bugtracker: http://tasks.celogeek.com/projects/perl-modules-dancer-plugin-redis
   homepage: https://gitorious.celogeek.com/perl-modules/dancer-plugin-redis
   repository: git://gitorious.celogeek.com/perl-modules/dancer-plugin-redis.git
-version: 0.5
+version: 0.6
 x_Dist_Zilla:
   perl:
     version: 5.016002

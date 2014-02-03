@@ -1,7 +1,7 @@
 #
 # This file is part of Dancer-Plugin-Redis
 #
-# This software is copyright (c) 2011 by celogeek <me@celogeek.com>.
+# This software is copyright (c) 2014 by celogeek <me@celogeek.com>.
 #
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
@@ -12,7 +12,7 @@ package Dancer::Plugin::Redis;
 
 use strict;
 use warnings;
-our $VERSION = '0.7';    # VERSION
+our $VERSION = '0.8';    # VERSION
 use Carp;
 use Dancer::Plugin;
 use Try::Tiny;
@@ -61,7 +61,12 @@ Dancer::Plugin::Redis - easy database connections for Dancer applications
 
 =head1 VERSION
 
-version 0.7
+version 0.8
+
+=head1 DESCRIPTION
+
+Provides an easy way to obtain a connected Redis database handle by simply calling
+the redis keyword within your L<Dancer> application.
 
 =head1 SYNOPSIS
 
@@ -77,11 +82,6 @@ version 0.7
 
 Redis connection details are read from your Dancer application config - see
 below.
-
-=head1 DESCRIPTION
-
-Provides an easy way to obtain a connected Redis database handle by simply calling
-the redis keyword within your L<Dancer> application.
 
 =head1 METHODS
 
@@ -141,7 +141,7 @@ L<Redis>
 =head1 BUGS
 
 Please report any bugs or feature requests on the bugtracker website
-http://tasks.celogeek.com/projects/perl-modules-dancer-plugin-redis
+https://github.com/celogeek/Dancer-Plugin-Redis/issues
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
@@ -153,7 +153,7 @@ celogeek <me@celogeek.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by celogeek <me@celogeek.com>.
+This software is copyright (c) 2014 by celogeek <me@celogeek.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

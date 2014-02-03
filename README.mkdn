@@ -4,7 +4,12 @@ Dancer::Plugin::Redis - easy database connections for Dancer applications
 
 # VERSION
 
-version 0.7
+version 0.8
+
+# DESCRIPTION
+
+Provides an easy way to obtain a connected Redis database handle by simply calling
+the redis keyword within your [Dancer](https://metacpan.org/pod/Dancer) application.
 
 # SYNOPSIS
 
@@ -20,11 +25,6 @@ version 0.7
 
 Redis connection details are read from your Dancer application config - see
 below.
-
-# DESCRIPTION
-
-Provides an easy way to obtain a connected Redis database handle by simply calling
-the redis keyword within your [Dancer](http://search.cpan.org/perldoc?Dancer) application.
 
 # METHODS
 
@@ -75,16 +75,16 @@ connected with those details.
 
 # SEE ALSO
 
-[Dancer](http://search.cpan.org/perldoc?Dancer)
+[Dancer](https://metacpan.org/pod/Dancer)
 
-[DBI](http://search.cpan.org/perldoc?DBI)
+[DBI](https://metacpan.org/pod/DBI)
 
-[Redis](http://search.cpan.org/perldoc?Redis)
+[Redis](https://metacpan.org/pod/Redis)
 
 # BUGS
 
 Please report any bugs or feature requests on the bugtracker website
-http://tasks.celogeek.com/projects/perl-modules-dancer-plugin-redis
+https://github.com/celogeek/Dancer-Plugin-Redis/issues
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
@@ -96,7 +96,7 @@ celogeek <me@celogeek.com>
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by celogeek <me@celogeek.com>.
+This software is copyright (c) 2014 by celogeek <me@celogeek.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

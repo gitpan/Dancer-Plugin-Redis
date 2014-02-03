@@ -14,6 +14,7 @@ t/author-critic.t
 t/lib/FakeRedis.pm
 t/lib/TestApp.pm
 t/redis.t
+t/release-kwalitee.t
 t/release-pod-coverage.t
 t/release-unused-vars.t
 xt/perlcritic.rc
